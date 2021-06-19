@@ -13,9 +13,21 @@ const styles = {
         margin: '1em',
         padding: '1em',
     },
+    fontLight: {
+        color: 'antiquewhite',
+    },
+    fontGold: {
+        color: 'gold',
+    },
+    fontRed: {
+        color: 'darkred',
+    },
+    lefty: {
+        marginLeft: "1em"
+    },
     plastic: {
         backgroundColor: "rgb(34, 34, 36)",
-        padding: '2em',
+        padding: '1em',
         border: 1,
         style: { width: '5rem', height: '5rem' },
     },
@@ -46,16 +58,44 @@ class DigitalClockface extends React.Component {
         const time = `${hour}:${minute}:${second}`;
         const date = `${year}-${month}-${day}`;
 
+        const blue = "rgb(34, 96, 230)";
+
         return (
             <Container maxWidth="sm">
-                <Grid container className={classes.root} justify="center" spacing={2}>
+                <Grid container justify="center" spacing={2}>
                     <Grid item xs={12}>
                         <Card className={classes.plastic}>
-                            <Box borderColor="rgb(34, 96, 230)" border={5} borderRadius={16} m={1}>
+                            <Box borderColor={blue} border={5} borderRadius={16} margin={1}>
+                                <Grid container justify="center" spacing={0}>
+                                    <Grid item xs={6}>
+                                        <Typography className={[classes.fontLight, classes.lefty]} variant="h4">CLOCKWORK</Typography>
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                        <Typography className={classes.fontGold} variant="h4" align="right">56c600eb</Typography>
+                                    </Grid>
+                                </Grid>
+                                <Box borderColor={blue} borderTop={5} margin="1em" paddingLeft="1em" paddingRight="1em" />
                                 <Paper className={classes.lcd} variant="outlined">
                                     <Typography variant="h6" align="right">{date}</Typography>
                                     <Typography variant="h1" align="right">{time}</Typography>
                                 </Paper>
+                                <Grid container justify="center">
+                                    <Grid item xs={4}>
+                                        <Box borderTop={4} borderColor={blue} paddingRight="1em" margin="1em" >
+                                            <Typography className={classes.fontLight} variant="h4" align="center">WATER</Typography>
+                                        </Box>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <Box borderColor={blue} border={4} borderRadius={16}>
+                                            <Typography className={classes.fontRed} variant="h3" align="center">WP</Typography>
+                                        </Box>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <Box borderTop={4} borderColor={blue} paddingRight="1em" margin="1em" >
+                                            <Typography className={classes.fontLight} variant="h4" align="center">PROOF</Typography>
+                                        </Box>
+                                    </Grid>
+                                </Grid>
                             </Box>
                         </Card>
                     </Grid>
